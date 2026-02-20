@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cyber Awareness - Professional Guide</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:linear-gradient(135deg,#0A192F,#020C1B);
+    color:white;
+    overflow-x:hidden;
+}
+
+/* Animated Background Grid */
+body::before{
+    content:"";
+    position:fixed;
+    width:200%;
+    height:200%;
+    background: repeating-linear-gradient(
+        0deg,
+        rgba(0,217,255,0.05) 0px,
+        rgba(0,217,255,0.05) 2px,
+        transparent 2px,
+        transparent 50px
+    );
+    animation: moveBg 20s linear infinite;
+    z-index:-1;
+}
+
+@keyframes moveBg{
+    from{transform:translateY(0);}
+    to{transform:translateY(-50px);}
+}
+
+.container{
+    width:90%;
+    max-width:1200px;
+    margin:auto;
+    padding:40px 0;
+}
+
+h1{
+    text-align:center;
+    font-size:38px;
+    margin-bottom:40px;
+    color:#00D9FF;
+}
+
+.section{
+    margin-bottom:60px;
+    animation: fadeIn 1.2s ease-in-out;
+}
+
+@keyframes fadeIn{
+    from{opacity:0; transform:translateY(30px);}
+    to{opacity:1; transform:translateY(0);}
+}
+
+.section h2{
+    margin-bottom:25px;
+    border-left:5px solid #00D9FF;
+    padding-left:10px;
+}
+
+/* ============================= */
+/* DOs vs DON’Ts Horizontal */
+/* ============================= */
+
+.compare-container{
+    margin-top:20px;
+}
+
+.row{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    padding:20px;
+    border-radius:12px;
+    transition:0.4s;
+}
+
+.item{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-weight:500;
+    transition:0.3s;
+}
+
+.item i{
+    font-size:18px;
+}
+
+/* DOs */
+.dos{
+    background:rgba(40,167,69,0.1);
+    border:2px solid #28A745;
+}
+
+.dos i{
+    color:#28A745;
+}
+
+/* DON’Ts */
+.donts{
+    background:rgba(220,53,69,0.1);
+    border:2px solid #DC3545;
+}
+
+.donts i{
+    color:#DC3545;
+}
+
+/* Divider */
+.divider{
+    height:3px;
+    background:linear-gradient(to right,#28A745,#DC3545);
+    margin:15px 0;
+    border-radius:5px;
+}
+    .compare-image{
+    text-align:center;
+    margin-top:30px;
+}
+
+.compare-image img{
+    max-width:52%;
+    width:378px;
+    border-radius:10px;
+    box-shadow:0 0 20px rgba(0,217,255,0.5);
+    transition:0.8s;
+}
+
+.compare-image img:hover{
+    transform:scale(1.05);
+}
+
+
+/* Hover */
+.item:hover{
+    transform:scale(1.1);
+}
+
+/* ============================= */
+/* Timeline */
+/* ============================= */
+
+.timeline{
+    border-left:3px solid #00D9FF;
+    padding-left:20px;
+}
+
+.step{
+    margin-bottom:15px;
+    position:relative;
+    padding-left:10px;
+}
+
+.step::before{
+    content:"";
+    width:12px;
+    height:12px;
+    background:#00D9FF;
+    position:absolute;
+    left:-27px;
+    top:5px;
+    border-radius:50%;
+}
+    /* ============================= */
+/* Video Section */
+/* ============================= */
+
+.video-case{
+    margin-top:5px;
+    background:#112240;
+    padding:46px;
+    border-radius:8px;
+    box-shadow:0 0 20px rgba(0,217,255,0.1);
+}
+
+.video-wrapper{
+    position:relative;
+    padding-bottom:56.25%; /* 16:9 ratio */
+    height:0;
+    overflow:hidden;
+    border-radius:12px;
+    margin-top:15px;
+}
+
+.video-wrapper iframe{
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+}
+
+.video-caption{
+    margin-top:15px;
+    font-size:20px;
+    color:#ccc;
+    text-align:center;
+}
+
+
+/* ============================= */
+/* Safety Cards */
+/* ============================= */
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
+}
+
+.card{
+    background:#112240;
+    padding:25px;
+    border-radius:15px;
+    transition:0.4s;
+    text-align:center;
+    box-shadow:0 0 15px rgba(0,217,255,0.1);
+}
+
+.card i{
+    font-size:30px;
+    margin-bottom:10px;
+    color:#00D9FF;
+}
+
+.card:hover{
+    transform:translateY(-10px) scale(1.05);
+    box-shadow:0 0 25px rgba(0,217,255,0.8);
+}
+
+/* ============================= */
+/* Carousel */
+/* ============================= */
+
+.carousel{
+    position:relative;
+}
+
+.case{
+    display:none;
+    padding:25px;
+    background:#112240;
+    border-radius:15px;
+}
+
+.case.active{
+    display:block;
+}
+
+.buttons{
+    margin-top:15px;
+    text-align:center;
+}
+
+button{
+    background:#00D9FF;
+    border:none;
+    padding:10px 18px;
+    margin:5px;
+    border-radius:5px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+button:hover{
+    background:white;
+    color:#0A192F;
+}
+
+@media(max-width:768px){
+    .row{
+        flex-direction:column;
+        gap:15px;
+        text-align:center;
+    }
+}
+    /* ============================= */
+/* Step Image Section */
+/* ============================= */
+
+.step-image{
+    margin-top:30px;
+    text-align:center;
+    background:#112240;
+    padding:30px;
+    border-radius:31px;
+    box-shadow:0 0 20px rgba(0,217,255,0.2);
+}
+
+.step-image h3{
+    margin-bottom:20px;
+    color:#00D9FF;
+}
+
+.step-image img{
+    width:104%;
+    max-width:750px;
+    border-radius:17px;
+    transition:0.9s;
+    box-shadow:0 0 25px rgba(0,217,255,0.5);
+}
+
+.step-image img:hover{
+    transform:scale(1.03);
+}
+    /* ===== NAVBAR ===== */
+header {
+    background: rgba(0,0,0,0.85);
+    padding: 15px 40px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h1 {
+    color: #00e5ff;
+    font-size: 22px;
+}
+
+nav a {
+    color: #ffffff;
+    margin-left: 18px;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+nav a:hover {
+    color: #00e5ff;
+}
+
+nav a i {
+    margin-right: 6px;
+}
+
+/* Adjust container padding to avoid content hidden behind fixed navbar */
+.container {
+    padding-top: 100px; /* adjust as needed */
+}
+
+
+
+</style>
+</head>
+<body>
+    <header>
+    <h1><i class="fas fa-shield-halved"></i> Cyber Law</h1>
+    <nav>
+        <a href="index.html"><i class="fas fa-house"></i> Home</a>
+        <a href="Research.html"><i class="fas fa-chart-line"></i> Research Findings</a>
+        <a href="tips.html"><i class="fas fa-lightbulb"></i> Awareness Tips</a>
+        <a href="survey.html"><i class="fas fa-square-poll-vertical"></i> Survey</a>
+        <a href="media.html"><i class="fas fa-photo-film"></i> Media Gallery</a>
+        <a href="chatbot.html"><i class="fas fa-robot"></i> Interactive Chatbot</a>
+        <a href="forum1.html"><i class="fas fa-users"></i> Community Forum</a>
+        <a href="links.html"><i class="fas fa-link"></i> Resources</a>
+        <a href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
+    </nav>
+</header>
+
+
+<div class="container">
+
+<h1>🔐 Cyber Awareness – Tips and Safety Guide</h1>
+
+<!-- DOs vs DON’Ts -->
+<div class="section">
+<h2>✅ Do’s vs ❌ Don’ts</h2>
+
+<div class="compare-container">
+
+<div class="row dos">
+    <div class="item"><i class="fas fa-lock"></i> Use Strong Passwords</div>
+    <div class="item"><i class="fas fa-shield-alt"></i> Enable 2FA</div>
+    <div class="item"><i class="fas fa-sync-alt"></i> Update Software</div>
+    <div class="item"><i class="fas fa-database"></i> Backup Data</div>
+</div>
+
+<div class="divider"></div>
+
+<div class="row donts">
+    <div class="item"><i class="fas fa-ban"></i> Share OTP</div>
+    <div class="item"><i class="fas fa-link"></i> Click Suspicious Links</div>
+    <div class="item"><i class="fas fa-wifi"></i> Public WiFi Banking</div>
+    <div class="item"><i class="fas fa-user-secret"></i> Reuse Passwords</div>
+</div>
+
+</div>
+</div>
+    <div class="compare-image">
+    <img src="d1.jpg" alt="Cyber Safety Illustration">
+            <img src="d2.jpg" alt="Cyber Safety Illustration">
+            <img src="d3.jpg" alt="Cyber Safety Illustration">
+</div>
+
+    
+
+<!-- Step Guide -->
+<div class="section">
+<h2>🛡 Step-by-Step: Guidence</h2>
+
+    <!-- Cyber Law Awareness Infographic -->
+<div class="step-image">
+    <h3>📘 Cyber Law Awareness –  Guide</h3>
+    <img src="s3.jpg" alt="Cyber Law Awareness Infographic">
+</div>
+
+
+<!-- Safety Practices -->
+<div class="section">
+<h2>🔒 Safety Practices</h2>
+<div class="cards">
+<div class="card">
+<i class="fas fa-virus"></i>
+<h3>Use Antivirus</h3>
+<p>Install trusted security software.</p>
+</div>
+
+<div class="card">
+<i class="fas fa-user-lock"></i>
+<h3>Lock Devices</h3>
+<p>Use PIN, password or biometric locks.</p>
+</div>
+
+<div class="card">
+<i class="fas fa-envelope"></i>
+<h3>Report Suspicious Emails</h3>
+<p>Inform IT or relevant authority.</p>
+</div>
+</div>
+</div>
+
+<!-- Case Studies -->
+<div class="section">
+<h2>📖 Real-Life Case Studies</h2>
+
+<div class="carousel">
+<div class="case active">
+<h3>Phishing Attack</h3>
+<p>A bank user clicked a fake email link and lost money.</p>
+<p><b>Lesson:</b> Always verify URLs.</p>
+</div>
+
+<div class="case">
+<h3>Ransomware Attack</h3>
+<p>Fake invoice attachment locked company data.</p>
+<p><b>Lesson:</b> Avoid unknown attachments.</p>
+</div>
+
+<div class="case">
+<h3>Social Media Hack</h3>
+<p>Weak password caused account takeover.</p>
+<p><b>Lesson:</b> Enable 2FA.</p>
+</div>
+</div>
+
+<div class="buttons">
+<button onclick="prevCase()">Previous</button>
+<button onclick="nextCase()">Next</button>
+</div>
+
+</div>
+
+</div>
+    <!-- Video Case Study -->
+<div class="video-case">
+    <h3>🎥 Real Cyber Attack Example</h3>
+
+    <div class="video-wrapper">
+        <iframe 
+            src="https://www.youtube.com/embed/MtstTtfvGZQ" 
+            title="Cyber Security Awareness Video"
+            frameborder="0"
+            allowfullscreen>
+        </iframe>
+    </div>
+    
+
+    <p class="video-caption">
+        📌 <b>Caption:</b>  Cosmos Bank Cyber Heist – Full Case Study<br>
+
+🏦 Background
+
+Cosmos Bank (also called Cosmos Co-operative Bank) is one of India’s older cooperative banks, headquartered in Pune, Maharashtra. In August 2018, it became the target of one of India’s largest cyber frauds — a sophisticated attack that led to nearly ₹94.4 crore being stolen over the course of just two days.<br>
+
+
+💻 How the Attack Happened
+
+Malware Infection
+Hackers gained unauthorized access by installing malware on Cosmos Bank’s ATM switch server, which controls debit card and ATM transactions. This malware functioned like a “ghost switch,” authorizing fraudulent transactions while bypassing normal security alerts, meaning bank systems didn’t spot the fraud in real time.<br>
+
+
+Cloning Debit Cards
+The attackers harvested data from the bank’s Visa and RuPay debit card systems. Using this data, they created cloned debit cards which were then used to withdraw large amounts of cash from ATMs around the world.<br>
+
+
+Global ATM Cash-Out
+On August 11, 2018, the fraudsters used the cloned cards to carry out thousands of ATM transactions in 28 countries. Roughly 12,000 withdrawals were made in overseas ATMs in a matter of hours, resulting in approximately ₹78 crore being withdrawn internationally.<br>
+
+
+Domestic Transactions
+Simultaneously, about 2,800 transactions occurred in India totaling about ₹2.5 crore. These were done using cloned cards at ATMs across the country.<br>
+
+
+SWIFT Transfer Attack
+On August 13, 2018, the attackers executed a second part of the fraud by sending a fraudulent payment of ₹13.92 crore to an account at a Hong Kong-based bank through the SWIFT international payment system using the malware-compromised access.
+    </p>
+</div>
+
+
+<script>
+
+let current=0;
+let cases=document.querySelectorAll(".case");
+
+function showCase(index){
+    cases.forEach(c=>c.classList.remove("active"));
+    cases[index].classList.add("active");
+}
+
+function nextCase(){
+    current++;
+    if(current>=cases.length){current=0;}
+    showCase(current);
+}
+
+function prevCase(){
+    current--;
+    if(current<0){current=cases.length-1;}
+    showCase(current);
+}
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Font Awesome Icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <title>Cyber Law Awareness Chatbot</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('https://assets.loadsure.net/content/uploads/c637d3fee0e38b60e22f421a8fc4f5df-960x0-c-default.png'); /* Updated background image related to cyber law awareness */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: #333;
+            height: 100vh;
+            overflow: hidden;
+            animation: backgroundPulse 10s infinite ease-in-out; /* Additional pulsing animation for attractiveness */
+        }
+        @keyframes backgroundPulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+        /* ===== NAVBAR ===== */
+        header {
+            background: rgba(0,0,0,0.85);
+            padding: 15px 40px;
+            position: fixed;
+            width: 87%;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header h1 {
+            color: #00e5ff;
+            font-size: 22px;
+        }
+
+        nav a {
+            color: #ffffff;
+            margin-left: 18px;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        nav a:hover {
+            color: #00e5ff;
+        }
+        nav a i {
+    margin-right: 6px;
+}
+        /* ===== HERO ===== */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 100px 40px 40px;
+        }
+
+        .hero-text {
+            max-width: 650px;
+        }
+
+        .hero-text h2 {
+            font-size: 42px;
+            margin-bottom: 15px;
+        }
+
+        .hero-text p {
+            font-size: 16px;
+            line-height: 1.7;
+        }
+ /* TOP-LEFT BACK BUTTON 
+        .back-btn {
+            position: fixed;
+            top: 15px;
+            left: 15px;
+            background: #00e5ff;
+            color: #000;
+            text-decoration: none;
+            padding: 10px 14px;
+            border-radius: 50%;
+            font-size: 18px;
+            transition: 0.3s;
+            z-index: 1000;
+        }
+
+        .back-btn:hover {
+            background: #00bcd4;
+            transform: scale(1.5);
+        }*/
+ .container {
+            max-width: 900px;
+            margin: 50px auto;
+            background: rgba(0,0,0,0.85);
+            padding: 40px;
+            border-radius: 12px;
+        }
+        .faq-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            padding: 30px;
+            max-width: 600px;
+            text-align: center;
+            animation: fadeIn 1s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translate(-50%, -50%) scale(0.9); }
+            to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+        }
+        .faq-container h2 {
+            color: #1a1a2e;
+            margin-bottom: 20px;
+            font-size: 2em;
+        }
+        .faq-list {
+            list-style: none;
+            padding: 0;
+        }
+        .faq-item {
+            margin-bottom: 10px;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: box-shadow 0.3s;
+        }
+        .faq-item:hover {
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        .faq-question {
+            padding: 15px;
+            background: #f0f0f0;
+            cursor: pointer;
+            transition: background 0.3s;
+            font-weight: bold;
+        }
+        .faq-question:hover {
+            background: #1a1a2e;
+            color: white;
+        }
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-in-out;
+            background: #e0e0e0;
+            padding: 0 15px;
+        }
+        .faq-answer.open {
+            max-height: 50px; /* Adjusted for one-line answers */
+            padding: 15px;
+        }
+        .chatbot-toggle {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s;
+            z-index: 1000;
+        }
+        .chatbot-toggle:hover {
+            transform: scale(1.1);
+        }
+        .chatbot-toggle::before {
+            content: '💬';
+            font-size: 24px;
+        }
+        .chat-container {
+            position: fixed;
+            bottom: 90px;
+            right: 20px;
+            width: 350px;
+            height: 500px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            display: none;
+            flex-direction: column;
+            animation: slideUp 0.5s ease-out;
+            z-index: 1000;
+        }
+        @keyframes slideUp {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        .chat-header {
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+        .chat-messages {
+            flex: 1;
+            overflow-y: auto;
+            padding: 15px;
+            background: #f9f9f9;
+        }
+        .message {
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 10px;
+            max-width: 80%;
+            animation: slideIn 0.5s ease-out;
+        }
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(-20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        .message.user {
+            background: #1a1a2e;
+            color: white;
+            margin-left: auto;
+            text-align: right;
+        }
+        .message.bot {
+            background: #e0e0e0;
+            color: #333;
+        }
+        .typing {
+            display: none;
+            font-style: italic;
+            color: #666;
+        }
+        .chat-input {
+            display: flex;
+            padding: 15px;
+            background: white;
+            border-top: 1px solid #ddd;
+        }
+        .chat-input input {
+            flex: 1;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 20px;
+            outline: none;
+            font-size: 0.9em;
+        }
+        .chat-input button {
+            margin-left: 10px;
+            padding: 8px 15px;
+            background: #1a1a2e;
+            color: white;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .chat-input button:hover {
+            background: #16213e;
+        }
+    </style>
+</head>
+<body>
+    <header>
+    <h1><i class="fas fa-shield-halved"></i> Cyber Law</h1>
+    <nav>
+        <a href="index.html"><i class="fas fa-house"></i> Home</a>
+        <a href="Research.html"><i class="fas fa-chart-line"></i> Research Findings</a>
+        <a href="tips.html"><i class="fas fa-lightbulb"></i> Awareness Tips</a>
+        <a href="survey.html"><i class="fas fa-square-poll-vertical"></i> Survey</a>
+        <a href="media.html"><i class="fas fa-photo-film"></i> Media Gallery</a>
+        <a href="chatbot.html"><i class="fas fa-robot"></i> Interactive Chatbot</a>
+        <a href="forum1.html"><i class="fas fa-users"></i> Community Forum</a>
+        <a href="links.html"><i class="fas fa-link"></i> Resources</a>
+        <a href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
+    </nav>
+</header>
+<!-- BACK BUTTON -->
+<a href="index.html" class="back-btn" title="Back to Home">
+    <i class="fas fa-arrow-left back-btn:hover"></i>
+    Home
+</a>
+
+    <div class="faq-container">
+        <h2>🛡️ Cyber Law Awareness FAQs</h2>
+        <ul class="faq-list" id="faqList">
+            <li class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">What is cyber law? 📜</div>
+                <div class="faq-answer">Cyber law governs legal principles for internet and digital technologies, covering data protection, privacy, and online crimes. 📜</div>
+            </li>
+            <li class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">How can I protect my data online? 🔒</div>
+                <div class="faq-answer">Use strong passwords, enable 2FA, avoid unsecured sites, and update software regularly. 🔒🛡️</div>
+            </li>
+            <li class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">What to do if I am a victim of cybercrime? 🚨</div>
+                <div class="faq-answer">Report to authorities, preserve evidence, and seek legal advice immediately. 🚨📞</div>
+            </li>
+            <li class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">What are the legal implications of hacking? ⚖️</div>
+                <div class="faq-answer">Hacking leads to charges under laws like CFAA or IT Act, with fines or imprisonment. ⚖️🚫</div>
+            </li>
+            <li class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">How to report cyber threats? 📞</div>
+                <div class="faq-answer">Contact local police or use portals like FBI IC3 or CERT-In for reporting. 📧🚔</div>
+            </li>
+            <li class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">What is phishing and how to avoid it? 🐟</div>
+                <div class="faq-answer">Phishing tricks you into revealing info; avoid suspicious links and verify sources. 🐟</div>
+            </li>
+            <li class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">What are the laws regarding data privacy? 🔒</div>
+                <div class="faq-answer">Laws like GDPR or CCPA protect personal data; ensure consent and secure handling. 🔒</div>
+            </li>
+            <li class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">What is cyberbullying and its consequences? 🚫</div>
+                <div class="faq-answer">Cyberbullying is online harassment; it can lead to legal action under anti-bullying laws. 🚫⚖️</div>
+            </li>
+            <li class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">How does intellectual property apply online? 📄</div>
+                <div class="faq-answer">Copyright and trademarks protect digital content; respect licenses and avoid infringement. 📄</div>
+            </li>
+            <li class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">What are the penalties for cybercrimes? ⚖️</div>
+                <div class="faq-answer">Penalties include fines, imprisonment, or both, depending on the severity and jurisdiction. ⚖️🚫</div>
+            </li>
+        </ul>
+    </div>
+
+    <div class="chatbot-toggle" onclick="toggleChat()"></div>
+
+    <div class="chat-container" id="chatContainer">
+        <div class="chat-header">
+            🤖 Cyber Law Assistant
+        </div>
+        <div class="chat-messages" id="chatMessages">
+            <div class="message bot">
+                Hello! I'm here to help with cyber law awareness. Ask me anything related to cyber law! 💬
+            </div>
+        </div>
+        <div class="chat-input">
+            <input type="text" id="userInput" placeholder="Type your cyber law question...">
+            <button onclick="sendMessage()">Send ✉️</button>
+        </div>
+    </div>
+
+    <script>
+        const chatContainer = document.getElementById('chatContainer');
+        const chatMessages = document.getElementById('chatMessages');
+        const userInput = document.getElementById('userInput');
+
+        // Predefined responses for Cyber Law Awareness (one-line answers)
+        const faqs = {
+            "What is cyber law?": "Cyber law governs legal principles for internet and digital technologies, covering data protection, privacy, and online crimes. 📜",
+            "How can I protect my data online?": "Use strong passwords, enable 2FA, avoid unsecured sites, and update software regularly. 🔒🛡️",
+            "What to do if I am a victim of cybercrime?": "Report to authorities, preserve evidence, and seek legal advice immediately. 🚨📞",
+            "What are the legal implications of hacking?": "Hacking leads to charges under laws like CFAA or IT Act, with fines or imprisonment. ⚖️🚫",
+            "How to report cyber threats?": "Contact local police or use portals like FBI IC3 or CERT-In for reporting. 📧🚔",
+            "What is phishing and how to avoid it?": "Phishing tricks you into revealing info; avoid suspicious links and verify sources. 🐟",
+            "What are the laws regarding data privacy?": "Laws like GDPR or CCPA protect personal data; ensure consent and secure handling. 🔒",
+            "What is cyberbullying and its consequences?": "Cyberbullying is online harassment; it can lead to legal action under anti-bullying laws. 🚫⚖️",
+            "How does intellectual property apply online?": "Copyright and trademarks protect digital content; respect licenses and avoid infringement. 📄",
+            "What are the penalties for cybercrimes?": "Penalties include fines, imprisonment, or both, depending on the severity and jurisdiction. ⚖️🚫"
+        };
+
+        // Additional cyber law related responses (one-line)
+        const cyberLawResponses = {
+            "data privacy": "Data privacy laws like GDPR or CCPA protect personal information; ensure HTTPS on sites. 🔒",
+            "phishing": "Phishing tricks you into revealing info; avoid suspicious links and unverified sources. 🐟",
+            "cyberbullying": "Report harassment online to platforms and authorities; laws like Cyberbullying Prevention Act apply. 🚫",
+            "intellectual property online": "Copyright and trademark laws apply online; use licensed software and respect digital rights. 📄",
+            "default": "I'm here for cyber law info. Please ask a specific question related to it! 😊"
+        };
+
+        function toggleFAQ(element) {
+            const answer = element.nextElementSibling;
+            const allAnswers = document.querySelectorAll('.faq-answer');
+            allAnswers.forEach(ans => {
+                if (ans !== answer) {
+                    ans.classList.remove('open');
+                }
+            });
+            answer.classList.toggle('open');
+        }
+
+        function toggleChat() {
+            chatContainer.style.display = chatContainer.style.display === 'flex' ? 'none' : 'flex';
+        }
+
+        function sendMessage() {
+            const message = userInput.value.trim().toLowerCase();
+            if (message === '') return;
+
+            // Add user message
+            addMessage(userInput.value, 'user');
+            userInput.value = '';
+
+            // Simulate typing
+            showTyping();
+
+            // Respond after delay
+            setTimeout(() => {
+                hideTyping();
+                const response = getResponse(message);
+                addMessage(response, 'bot');
+            }, 1000);
+        }
+
+        function addMessage(text, sender) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${sender}`;
+            messageDiv.innerHTML = text;
+            chatMessages.appendChild(messageDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        function showTyping() {
+            const typingDiv = document.createElement('div');
+            typingDiv.className = 'message bot typing';
+            typingDiv.innerHTML = 'Typing... ⌨️';
+            chatMessages.appendChild(typingDiv);
+        }
+
+        function hideTyping() {
+            const typing = document.querySelector('.typing');
+            if (typing) typing.remove();
+        }
+
+        function getResponse(message) {
+            // Check exact FAQ matches
+            for (let key in faqs) {
+                if (message.includes(key.toLowerCase())) {
+                    return faqs[key];
+                }
+            }
+            // Check for related cyber law topics
+            for (let key in cyberLawResponses) {
+                if (message.includes(key)) {
+                    return cyberLawResponses[key];
+                }
+            }
+            // Default response
+            return cyberLawResponses["default"];
+        }
+
+        // Allow sending message on Enter key
+        userInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Cyber Law Awareness Hub</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<!-- Font Awesome Icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+/* ===== GLOBAL ===== */
+* { margin:0; padding:0; box-sizing:border-box; font-family:'Poppins', sans-serif; }
+body { overflow-x:hidden; color:#fff; }
+
+/* ===== NAVBAR ===== */
+header {
+    background: rgba(0,0,0,0.85);
+    padding: 15px 40px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+header h1 { color:#00e5ff; font-size:22px; }
+nav a {
+    color:#fff;
+    margin-left:18px;
+    text-decoration:none;
+    font-size:14px;
+}
+nav a:hover { color:#00e5ff; }
+nav a i {
+    margin-right: 6px;
+}
+/* ===== BODY & BACKGROUND ===== */
+body {
+    background: url('image-cyber.jpg') no-repeat center center fixed;
+    background-size: cover;
+    position: relative;
+    padding-top: 80px; /* space for fixed navbar */
+}
+
+/* Dark overlay */
+body::before {
+    content: '';
+    position: fixed;
+    top:0; left:0;
+    width:100%; height:100%;
+    background: rgba(0,0,0,0.6);
+    z-index:-1;
+}
+
+/* Canvas for neon particles */
+#particle-canvas {
+    position: fixed;
+    top:0; left:0;
+    width:100%; height:100%;
+    z-index:0;
+}
+
+/* Container */
+.container {
+    max-width:1200px;
+    margin:20px auto;
+    padding:20px;
+    background: rgba(0,0,0,0.6);
+    border-radius:10px;
+    box-shadow:0 0 20px rgba(0,0,0,0.3);
+    position: relative;
+    z-index:2;
+}
+
+/* Sections */
+.section { margin-bottom:40px; }
+.section h2 {
+    color:#00f2fe;
+    border-bottom:2px solid #00f2fe;
+    padding-bottom:10px;
+    cursor:pointer;
+    transition: color 0.3s ease;
+}
+.section h2:hover { color:#ff6b6b; }
+
+/* Resource grid */
+.resource-grid {
+    display:grid;
+    grid-template-columns: repeat(auto-fit,minmax(300px,1fr));
+    gap:30px;
+    max-height:0;
+    overflow:hidden;
+    transition:max-height 0.5s ease-in-out;
+}
+.resource-grid.expanded { max-height:2000px; }
+.resource-card {
+    background: rgba(255,255,255,0.05);
+    color:#fff;
+    padding:20px;
+    border-radius:8px;
+    box-shadow:0 0 15px rgba(0,255,255,0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+.resource-card:hover {
+    transform:translateY(-5px);
+    box-shadow:0 0 25px rgba(0,255,255,0.6);
+}
+.resource-card img { width:100%; height:150px; object-fit:cover; border-radius:5px; margin-bottom:15px; }
+.resource-card h3 { margin:0 0 10px 0; }
+.resource-card p { margin:0 0 15px 0; color:#ddd; }
+.resource-card a { color:#00f2fe; text-decoration:none; font-weight:bold; }
+.resource-card a:hover { text-decoration:underline; }
+
+/* AI Chatbot */
+.ai-chatbot {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width:60px; height:60px;
+    background:#667eea;
+    border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    cursor:pointer;
+    box-shadow:0 4px 10px rgba(0,0,0,0.3);
+    transition: transform 0.3s ease;
+    z-index:10;
+}
+.ai-chatbot:hover { transform:scale(1.1); }
+.ai-chatbot i { color:white; font-size:24px; }
+
+.chat-window {
+    display:none;
+    position:fixed;
+    bottom:90px; right:20px;
+    width:300px; height:400px;
+    background: rgba(0,0,0,0.9);
+    border-radius:10px;
+    box-shadow:0 4px 20px rgba(0,0,0,0.3);
+    padding:20px;
+    overflow-y:auto;
+    z-index:10;
+    color:#fff;
+}
+.chat-window.show { display:block; }
+.chat-messages { height:300px; overflow-y:auto; margin-bottom:10px; }
+.chat-input { display:flex; }
+.chat-input input { flex:1; padding:10px; border:1px solid #ddd; border-radius:5px; }
+.chat-input button { padding:10px; background:#00f2fe; color:#0e0e0e; border:none; border-radius:5px; margin-left:5px; cursor:pointer; }
+
+/* Footer */
+footer { text-align:center; padding:20px; background: rgba(0,0,0,0.7); color:#ccc; position:relative; z-index:2; }
+
+</style>
+</head>
+
+<body>
+<canvas id="particle-canvas"></canvas>
+
+
+    <header>
+    <h1><i class="fas fa-shield-halved"></i> Cyber Law</h1>
+    <nav>
+        <a href="index.html"><i class="fas fa-house"></i> Home</a>
+        <a href="Research.html"><i class="fas fa-chart-line"></i> Research Findings</a>
+        <a href="tips.html"><i class="fas fa-lightbulb"></i> Awareness Tips</a>
+        <a href="survey.html"><i class="fas fa-square-poll-vertical"></i> Survey</a>
+        <a href="media.html"><i class="fas fa-photo-film"></i> Media Gallery</a>
+        <a href="chatbot.html"><i class="fas fa-robot"></i> Interactive Chatbot</a>
+        <a href="forum1.html"><i class="fas fa-users"></i> Community Forum</a>
+        <a href="links.html"><i class="fas fa-link"></i> Resources</a>
+        <a href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
+    </nav>
+</header>
+
+<div class="container" id="Intro">
+
+    <!-- Government Portals Section -->
+    <section class="section">
+        <h2 onclick="toggleSection(this)">Government Portals</h2>
+        <div class="resource-grid">
+            <div class="resource-card">
+                <img src="https://via.placeholder.com/300x150/667eea/ffffff?text=Indian+Cyber+Crime+Portal" alt="Indian Cyber Crime Portal" />
+                <h3>Indian Cyber Crime Portal</h3>
+                <p>Report cyber crimes and access government resources in India.</p>
+                <a href="https://cybercrime.gov.in/" target="_blank">Visit Portal <i class="fas fa-external-link-alt"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Helplines Section -->
+    <section class="section">
+        <h2 onclick="toggleSection(this)">Cyber Helplines</h2>
+        <div class="resource-grid">
+            <div class="resource-card">
+                <h3>Indian Cyber Crime Helpline</h3>
+                <p>Call: 155260<br />Email: <a href="mailto:cybercrime@nic.in">cybercrime@nic.in</a></p>
+            </div>
+            <div class="resource-card">
+                <h3>IC3 (USA)</h3>
+                <p>Internet Crime Complaint Center<br />Website: <a href="https://www.ic3.gov" target="_blank">ic3.gov</a></p>
+            </div>
+            <div class="resource-card">
+                <h3>ENISA (Europe)</h3>
+                <p>European Union Agency for Cybersecurity<br />Website: <a href="https://www.enisa.europa.eu" target="_blank">enisa.europa.eu</a></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Learning Resources Section -->
+    <section class="section">
+        <h2 onclick="toggleSection(this)">Learning Resources</h2>
+        <div class="resource-grid">
+            <div class="resource-card">
+                <h3>Coursera: Cybersecurity Basics</h3>
+                <p>Free & paid courses on cybersecurity fundamentals.</p>
+                <a href="https://www.coursera.org/courses?query=cybersecurity" target="_blank">Visit Course <i class="fas fa-external-link-alt"></i></a>
+            </div>
+            <div class="resource-card">
+                <h3>edX Cybersecurity Courses</h3>
+                <p>Learn from top universities about digital safety.</p>
+                <a href="https://www.edx.org/learn/cybersecurity" target="_blank">Visit Course <i class="fas fa-external-link-alt"></i></a>
+            </div>
+            <div class="resource-card">
+                <h3>Cybrary</h3>
+                <p>Hands-on learning platform for cybersecurity skills.</p>
+                <a href="https://www.cybrary.it" target="_blank">Visit Website <i class="fas fa-external-link-alt"></i></a>
+            </div>
+        </div>
+    </section>
+</div>
+
+<!-- AI Chatbot -->
+<div class="ai-chatbot" onclick="toggleChat()">
+    <i class="fas fa-robot"></i>
+</div>
+<div class="chat-window" id="chat-window">
+    <h3>AI Cyber Assistant</h3>
+    <div class="chat-messages" id="chat-messages">
+        <p><strong>AI:</strong> Hello! Ask me about cyber law awareness.</p>
+    </div>
+    <div class="chat-input">
+        <input type="text" id="chat-input" placeholder="Type your question..." />
+        <button onclick="sendMessage()">Send</button>
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2026 Cyber Law Awareness Hub. Powered by AI for better digital safety.</p>
+</footer>
+
+<script>
+// ===== Section toggle =====
+function toggleSection(header) {
+    const grid = header.nextElementSibling;
+    grid.classList.toggle('expanded');
+}
+
+// ===== AI Chatbot =====
+function toggleChat() {
+    const chat = document.getElementById('chat-window');
+    chat.classList.toggle('show');
+}
+function sendMessage() {
+    const input = document.getElementById('chat-input');
+    const messages = document.getElementById('chat-messages');
+    if(input.value.trim()){
+        messages.innerHTML += `<p><strong>You:</strong> ${input.value}</p>`;
+        setTimeout(() => {
+            messages.innerHTML += `<p><strong>AI:</strong> Check government portals or helplines for guidance.</p>`;
+            messages.scrollTop = messages.scrollHeight;
+        }, 1000);
+        input.value = '';
+    }
+}
+
+// ===== Particle Animation =====
+const canvas = document.getElementById('particle-canvas');
+const ctx = canvas.getContext('2d');
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+class Particle {
+    constructor(){
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        this.radius = Math.random()*2+1;
+        this.dx = (Math.random()-0.5)*0.5;
+        this.dy = (Math.random()-0.5)*0.5;
+        this.color = `rgba(0,255,255,${Math.random()*0.7})`;
+    }
+    draw(){ ctx.beginPath(); ctx.arc(this.x,this.y,this.radius,0,Math.PI*2,false); ctx.fillStyle=this.color; ctx.fill(); }
+    update(){ this.x+=this.dx; this.y+=this.dy; if(this.x<0||this.x>canvas.width)this.dx*=-1; if(this.y<0||this.y>canvas.height)this.dy*=-1; this.draw(); }
+}
+
+let particlesArray=[];
+for(let i=0;i<150;i++)particlesArray.push(new Particle());
+
+function connectParticles(){
+    for(let a=0;a<particlesArray.length;a++){
+        for(let b=a;b<particlesArray.length;b++){
+            const dx=particlesArray[a].x-particlesArray[b].x;
+            const dy=particlesArray[a].y-particlesArray[b].y;
+            const distance=Math.sqrt(dx*dx+dy*dy);
+            if(distance<120){
+                ctx.beginPath();
+                ctx.strokeStyle=`rgba(0,255,255,${1-distance/120})`;
+                ctx.lineWidth=1;
+                ctx.moveTo(particlesArray[a].x,particlesArray[a].y);
+                ctx.lineTo(particlesArray[b].x,particlesArray[b].y);
+                ctx.stroke();
+            }
+        }
+    }
+}
+
+function animate(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    particlesArray.forEach(p=>p.update());
+    connectParticles();
+    requestAnimationFrame(animate);
+}
+animate();
+
+window.addEventListener('resize', ()=>{
+    canvas.width=window.innerWidth;
+    canvas.height=window.innerHeight;
+});
+</script>
+</body>
+</html>

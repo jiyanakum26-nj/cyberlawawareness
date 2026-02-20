@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cyber Law Awareness</title>
+
+<!-- Swiper CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"/>
+<!-- Font Awesome Icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+/* ====== General Styling ====== */
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+  color: #fff;
+}
+
+/* ====== Header ====== */
+header {
+  background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+  color: white;
+  padding: 15px 30px;
+  text-align: center;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 2.5rem;
+}
+
+nav {
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+}
+
+nav a {
+  text-decoration: none;
+  color: #00f0ff;
+  font-weight: bold;
+  padding: 8px 12px;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+
+nav a:hover {
+  background: #00f0ff;
+  color: #1f2a38;
+}
+nav a i {
+    margin-right: 6px;
+}
+
+/* ====== Gallery Headings ====== */
+h2 {
+  text-align: center;
+  font-size: 2rem;
+  margin: 40px 0 20px 0;
+  animation: fadeIn 1.5s ease-in-out;
+}
+
+/* ====== Swiper Galleries ====== */
+.swiper {
+  width: 40%;
+  max-width: 1000px;
+  margin: 30px auto 50px auto;
+  padding: 30px 0;
+  border-radius: 15px;
+  background: rgba(255,255,255,0.05);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+
+.swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #1f2a38;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.swiper-slide img,
+.swiper-slide video {
+  width: 80%;              /* Makes image smaller */
+  max-height: 400px;       /* Controls height */
+  object-fit: contain;     /* Keeps full image visible */
+  border-radius: 10px;
+  transition: transform 0.5s;
+}
+}
+.swiper-slide img:hover,
+.swiper-slide video:hover {
+  transform: scale(1.05);
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  color: #00f0ff;
+}
+
+.swiper-pagination-bullet-active {
+  background: #00f0ff;
+}
+
+/* ====== Animations ====== */
+@keyframes fadeIn {
+  from {opacity: 0; transform: translateY(-20px);}
+  to {opacity: 1; transform: translateY(0);}
+}
+
+/* ====== Responsive ====== */
+@media (max-width: 768px) {
+  nav {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- ====== Header ====== -->
+<header>
+    <h1><i class="fas fa-shield-halved"></i> Cyber Law</h1>
+    <nav>
+        <a href="index.html"><i class="fas fa-house"></i> Home</a>
+        <a href="Research.html"><i class="fas fa-chart-line"></i> Research Findings</a>
+        <a href="tips.html"><i class="fas fa-lightbulb"></i> Awareness Tips</a>
+        <a href="survey.html"><i class="fas fa-square-poll-vertical"></i> Survey</a>
+        <a href="media.html"><i class="fas fa-photo-film"></i> Media Gallery</a>
+        <a href="chatbot.html"><i class="fas fa-robot"></i> Interactive Chatbot</a>
+        <a href="forum1.html"><i class="fas fa-users"></i> Community Forum</a>
+        <a href="links.html"><i class="fas fa-link"></i> Resources</a>
+        <a href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
+    </nav>
+</header>
+
+<!-- ====== Images Gallery ====== -->
+<h2>Images Gallery</h2>
+<div class="swiper imageSwiper">
+  <div class="swiper-wrapper">
+    <!--<div class="swiper-slide">
+      <img src="https://www.webalive.com.au/wp-content/uploads/2024/08/Cybersecurity-Tips-for-Small-Business-Owners-724x412.png" alt="Cyber Security Image 2">
+    </div>
+
+    <!-- ====== ADDED IMAGES ====== -->
+
+    <div class="swiper-slide">
+      <img src="https://marketplace.canva.com/EAGz845fpa8/1/0/1131w/canva-blue-and-yellow-illustration-cybersecurity-poster-SA3HmPQWjtE.jpg" alt="Cyber Poster 1">
+    </div>
+
+    <div class="swiper-slide">
+      <img src="https://cybersecurity.bureauveritas.com/uploads/media/Think-before-you-click.jpg_2023-11-08-135411_rhww.png" alt="Cyber Poster 2">
+    </div>
+
+    <div class="swiper-slide">
+      <img src="https://www.cyberpilot.io/hubfs/New%20poster%20-%20EN/90%25_of_Cyberattacks_happen_via_email.png" alt="Cyber Poster 3">
+    </div>
+
+    <div class="swiper-slide">
+      <img src="https://assets.visme.co/templates/banners/thumbnails/i_Cyber-Security-Awareness-Poster_full.jpg" alt="Cyber Poster 4">
+    </div>
+<!-- ====== NEW MEDIA GALLERY IMAGES ====== -->
+
+<div class="swiper-slide">
+  <img src="https://caniphish.com/Supporting/Posters/secure-workspace-poster.png" alt="Secure Workspace Cyber Poster">
+</div>
+
+<div class="swiper-slide">
+  <img src="https://marketplace.canva.com/EAGnx7xGlt4/1/0/1131w/canva-blue-and-purple-modern-cyber-security-poster-oGCIOkPDues.jpg" alt="Modern Cyber Security Poster">
+</div>
+
+<div class="swiper-slide">
+  <img src="https://img.freepik.com/premium-vector/cyber-security-awareness-poster-flyer-template_1026716-1537.jpg" alt="Cyber Security Awareness Flyer">
+</div>
+
+
+<div class="swiper-slide">
+  <img src="https://marketplace.canva.com/EAGm3r9Ph4I/2/0/1131w/canva-blue-white-illustrated-cybercrime-awareness-poster-FHK5yhfhMWo.jpg" alt="Cybercrime Awareness Poster">
+</div>
+
+    <!-- Add more images here -->
+  </div>
+  <div class="swiper-button-next"></div>
+  <div class="swiper-button-prev"></div>
+  <div class="swiper-pagination"></div>
+</div>
+
+<!-- ====== Posters Gallery ====== -->
+<h2>Posters Gallery</h2>
+<div class="swiper posterSwiper">
+  <div class="swiper-wrapper">
+    <!-- ====== NEWLY ADDED POSTER IMAGES ====== -->
+<!-- ====== NEW COLLEGE POSTER ADDED ====== -->
+
+<div class="swiper-slide">
+ <img src="i1.jpg">
+
+</div>
+
+<div class="swiper-slide">
+  <img src="i2.jpg">
+</div>
+
+<div class="swiper-slide">
+  <img src="i3.jpg">
+</div>
+
+<div class="swiper-slide">
+  <img src="i4.jpg">
+</div>
+
+<div class="swiper-slide">
+  <img src="i5">
+</div>
+
+
+
+    <!-- Add more posters here -->
+  </div>
+  <div class="swiper-button-next"></div>
+  <div class="swiper-button-prev"></div>
+  <div class="swiper-pagination"></div>
+</div>
+
+<!-- ====== Videos Gallery ====== -->
+<!-- ====== Videos Gallery ====== -->
+<h2>Videos/Tutorials Gallery</h2>
+<div class="swiper videoSwiper">
+  <div class="swiper-wrapper">
+    <div class="swiper-slide">
+      <iframe width="80%" height="400" src="https://www.youtube.com/embed/sS3mZVCARZg" title="YouTube video" frameborder="0" allowfullscreen></iframe>
+    </div>
+    <div class="swiper-slide">
+      <iframe width="80%" height="400" src="https://www.youtube.com/embed/5lRkQFtVAX0" title="YouTube video" frameborder="0" allowfullscreen></iframe>
+    </div>
+    <div class="swiper-slide">
+      <iframe width="80%" height="400" src="https://www.youtube.com/embed/VEQd-jmVs44" title="YouTube video" frameborder="0" allowfullscreen></iframe>
+    </div>
+    <div class="swiper-slide">
+      <iframe width="80%" height="400" src="https://www.youtube.com/embed/v3iUx2SNspY" title="YouTube video" frameborder="0" allowfullscreen></iframe>
+    </div>
+  </div>
+  <div class="swiper-button-next"></div>
+  <div class="swiper-button-prev"></div>
+  <div class="swiper-pagination"></div>
+</div>
+  
+
+
+<!-- ====== Swiper JS ====== -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+<script>
+  // Images Gallery
+  new Swiper(".imageSwiper", {
+    loop: true,
+    navigation: { nextEl: ".imageSwiper .swiper-button-next", prevEl: ".imageSwiper .swiper-button-prev" },
+    pagination: { el: ".imageSwiper .swiper-pagination", clickable: true },
+    autoplay: { delay: 4000, disableOnInteraction: false },
+    effect: 'coverflow',
+    coverflowEffect: { rotate: 20, slideShadows: false },
+  });
+
+  // Posters Gallery
+  new Swiper(".posterSwiper", {
+    loop: true,
+    navigation: { nextEl: ".posterSwiper .swiper-button-next", prevEl: ".posterSwiper .swiper-button-prev" },
+    pagination: { el: ".posterSwiper .swiper-pagination", clickable: true },
+    autoplay: { delay: 5000, disableOnInteraction: false },
+    effect: 'coverflow',
+    coverflowEffect: { rotate: 20, slideShadows: false },
+  });
+
+  // Videos Gallery
+  new Swiper(".videoSwiper", {
+    loop: true,
+    navigation: { nextEl: ".videoSwiper .swiper-button-next", prevEl: ".videoSwiper .swiper-button-prev" },
+    pagination: { el: ".videoSwiper .swiper-pagination", clickable: true },
+    autoplay: { delay: 6000, disableOnInteraction: false },
+    effect: 'coverflow',
+    coverflowEffect: { rotate: 20, slideShadows: false },
+  });
+
+</script>
+  
+
+</body>
+</html>
